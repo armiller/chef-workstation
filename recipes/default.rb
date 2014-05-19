@@ -9,5 +9,5 @@
 #
 case['platform_family']
 when 'mac_os_x'
-    include_recipe 'workstation::macintosh'
+    include_recipe "workstation::macintosh"
 end
