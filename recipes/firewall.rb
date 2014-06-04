@@ -21,7 +21,7 @@ end
 
 iptables_ng_rule 'fail2ban-ssh' do 
     rule '--jump ACCEPT'
-    chain fail2ban-ssh
+    chain 'fail2ban-ssh'
 end
 
 iptables_ng_rule 'loopback' do
