@@ -4,3 +4,5 @@ when 'Pippen'
 else
 	default['workstation']['user'] = "armiller"
 end
+
+default['iptables-ng']['enabled_ip_versions'] = 4
