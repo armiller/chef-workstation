@@ -12,16 +12,11 @@ iptables_ng_chain 'INPUT' do
 end
 
 # Setup chains and jumps for rules
-%w{loopback established icmp ssh fail2ban-ssh}.each do |chain| 
+%w{loopback established icmp ssh}.each do |chain| 
     iptables_ng_chain "#{chain}"
     iptables_ng_rule "accept_#{chain}" do
         rule "--jump #{chain}"
     end
-end
-
-iptables_ng_rule 'fail2ban-ssh' do 
-    rule '--jump ACCEPT'
-    chain 'fail2ban-ssh'
 end
 
 iptables_ng_rule 'loopback' do
