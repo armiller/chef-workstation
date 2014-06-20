@@ -8,7 +8,6 @@
 #
 #
 
-
 bash "prepare-homebrew" do 
 	user node['workstation']['user'] 
 	code <<-EOH
@@ -17,3 +16,9 @@ bash "prepare-homebrew" do
 end
 
 include_recipe "homebrew"
+
+node.set['homebrew']['owner'] = node['workstation']['user']
+
+%w{httping wget keychain git vim}.each do |pkg| 
+    homebrew_package pkg
+end 
