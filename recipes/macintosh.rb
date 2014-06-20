@@ -47,3 +47,9 @@ dmg_package 'Google Chrome' do
   checksum '7daa2dc5c46d9bfb14f1d7ff4b33884325e5e63e694810adc58f14795165c91a'
   action   :install
 end
+
+include_recipe "iterm2"
+include_recipe "macapps::virtualbox"
+include_recipe "macapps::vagrant"
+include_recipe "macapps::firefox"
+include_recipe "macapps::caffeine"
