@@ -30,6 +30,7 @@ end
 include_recipe "dmg" 
 
 dmg_package "Adium" do 
+    dmg_name "Adium 1.5.10"
     source "http://downloads.sourceforge.net/project/adium/Adium_1.5.10.dmg?r=&ts=1403291553&use_mirror=iweb"
     action :install
 end 
