@@ -34,3 +34,16 @@ dmg_package "Adium" do
     source "http://downloads.sourceforge.net/project/adium/Adium_1.5.10.dmg?r=&ts=1403291553&use_mirror=iweb"
     action :install
 end 
+
+dmg_package "Sublime Text 2" do
+    volumes_dir "Sublime Text 2.0.2" 
+    source "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.dmg"
+    action :install
+end 
+
+dmg_package 'Google Chrome' do
+  dmg_name 'googlechrome'
+  source   'https://dl-ssl.google.com/chrome/mac/stable/GGRM/googlechrome.dmg'
+  checksum '7daa2dc5c46d9bfb14f1d7ff4b33884325e5e63e694810adc58f14795165c91a'
+  action   :install
+end
