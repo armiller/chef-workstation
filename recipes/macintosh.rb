@@ -11,8 +11,10 @@
 bash "prepare-homebrew" do 
 	user node['workstation']['user'] 
 	code <<-EOH
-	sudo chown -R #{node['workstation']['user']}:staff /usr/local
+	chown -R #{node['workstation']['user']}:staff /usr/local
+    touch /Users/#{node['workstation']['user']}/.brewrun
 	EOH
+    not_if "test -f /Users/#{node['workstation']['user']}/.brewrun"
 end
 
 include_recipe "homebrew"
