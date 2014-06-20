@@ -8,3 +8,4 @@ version          '0.1.4'
 
 depends			 'homebrew'
 depends          'iptables-ng'
+depends          'dmg'
