@@ -4,7 +4,7 @@ maintainer_email 'YOUR_EMAIL'
 license          'All rights reserved'
 description      'Installs/Configures workstation'
 long_description 'Installs/Configures workstation'
-version          '0.1.4'
+version          '0.1.5'
 
 depends			 'homebrew'
 depends          'iptables-ng'
