@@ -20,5 +20,7 @@ include_recipe "homebrew"
 node.set['homebrew']['owner'] = node['workstation']['user']
 
 %w{httping wget keychain git vim}.each do |pkg| 
-    homebrew_package pkg
+    package pkg do 
+        action :install
+    end
 end 
