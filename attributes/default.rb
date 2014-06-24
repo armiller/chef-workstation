@@ -6,3 +6,5 @@ else
 end
 
 default['iptables-ng']['enabled_ip_versions'] = 4
+
+default['workstation']['packages'] = %w{vim git keychain wget iotop htop}

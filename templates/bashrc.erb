@@ -1,0 +1,29 @@
+unset HISTFILESIZE
+HISTSIZE=10000
+
+NORMAL="\[\e[0m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+WHITE="\[\e[0;37m\]"
+if [[ $EUID == 0 ]] ; then
+  PS1="$RED\u@\h $WHITE\w$RED # $NORMAL"
+else
+    PS1="$NORMAL\u@\h$NORMAL:\w$NORMAL $ $NORMAL"
+fi
+export EDITOR=vim
+
+### START-Keychain ###
+# Let  re-use ssh-agent and/or gpg-agent between logins
+/usr/local/bin/keychain $HOME/.ssh/id_rsa $HOME/.ssh/id_rsa_aws
+source $HOME/.keychain/$HOSTNAME-sh
+### End-Keychain ###
+
+alias gs='git status'
+alias gd='git diff'
+alias gb='git branch -a'
+alias irc='ssh -t truth "screen -dr"'
+<% case['platform_family'] when 'mac_os_x' %> 
+export PATH=/usr/local/Cellar:$PATH
+export CLICOLOR='1'
+<% when 'rhel','debian','ubuntu','fedora' %>
+<% end %> 

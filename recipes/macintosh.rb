@@ -12,16 +12,15 @@ bash "prepare-homebrew" do
 	user node['workstation']['user'] 
 	code <<-EOH
 	chown -R #{node['workstation']['user']}:staff /usr/local
-    touch /Users/#{node['workstation']['user']}/.brewrun
 	EOH
-    not_if "test -f /Users/#{node['workstation']['user']}/.brewrun"
+    not_if "which brew"
 end
 
 include_recipe "homebrew"
 
 node.set['homebrew']['owner'] = node['workstation']['user']
 
-%w{httping wget keychain git vim}.each do |pkg| 
+node['workstation']['packages'].each do |pkg| 
     package pkg do 
         action :install
     end
