@@ -18,7 +18,7 @@ simple_iptables_rule "system" do
     "--in-interface lo",
     # Allow any established connections to continue, even
     # if they would be in violation of other rules.
-    "-m conntrack --ctstate ESTABLISHED,RELATED",
+    "-m conntrack --ctstate ESTABLISHED,RELATED"
   ]
   jump "ACCEPT"
 end
