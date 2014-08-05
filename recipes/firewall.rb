@@ -28,3 +28,8 @@ simple_iptables_rule "ssh" do
   rule "--proto tcp --dport 22"
   jump "ACCEPT"
 end
+
+simple_iptables_rule "http" do
+  rule "--proto tcp --dport 80"
+  jump "ACCEPT"
+end
