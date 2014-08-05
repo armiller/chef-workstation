@@ -8,7 +8,12 @@
 #
 #
 
-service "fail2ban" do 
+service "fail2ban" do
     supports :restart => true, :start => true, :stop => true
     action [:enable, :start]
-end 
+end
+
+service "fail2ban" do
+  action :restart
+  not_if "iptables -S | grep fail2ban"
+end
