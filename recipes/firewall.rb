@@ -33,3 +33,8 @@ simple_iptables_rule "http" do
   rule "--proto tcp --dport 80"
   jump "ACCEPT"
 end
+
+simple_iptables_rule "weechat" do
+  rule "--proto tcp --dport 8020"
+  jump "ACCEPT"
+end  
