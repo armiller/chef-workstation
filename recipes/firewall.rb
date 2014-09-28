@@ -32,10 +32,10 @@ end
 simple_iptables_rule "http" do
   rule "--proto tcp --dport 80"
   jump "ACCEPT"
+  action :delete
 end
 
 simple_iptables_rule "weechat" do
-  rule ["--proto tcp --dport 8020",
-        "--proto tcp --dport 8000"]
+  rule "--proto tcp --dport 8000"
   jump "ACCEPT"
-end  
+end
