@@ -13,7 +13,6 @@ include_recipe "simple_iptables"
 
 simple_iptables_policy "INPUT" do
   policy "DROP"
-  ip_versions :both
 end
 
 # Allow all traffic on the loopback device
