@@ -29,8 +29,8 @@ end
 
 simple_iptables_rule 'icmp' do
   rule [
-      "--protocol icmp --source 0/0 --icmp-type echo-request",
-      "--protocol icmp --source 0/0 --icmp-type time-exceeded"
+      "--protocol icmp --icmp-type echo-request",
+      "--protocol icmp --icmp-type time-exceeded"
   ]
   jump "ACCEPT"
   ip_version :both
