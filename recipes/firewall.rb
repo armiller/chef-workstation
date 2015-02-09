@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 #
+node.default['simple_iptables']['ip_versions'] = ['ipv4', 'ipv6']
+
 include_recipe "simple_iptables"
 
 simple_iptables_policy "INPUT" do
@@ -24,13 +26,16 @@ simple_iptables_rule "system" do
   jump "ACCEPT"
 end
 
-simple_iptables_rule "ssh" do
-  rule "--proto tcp --dport 22"
+simple_iptables_rule 'icmp' do
+  rule [
+      "--protocol icmp --source 0/0 --icmp-type echo-request",
+      "--protocol icmp --source 0/0 --icmp-type time-exceeded"
+  ]
   jump "ACCEPT"
 end
 
-simple_iptables_rule "http" do
-  rule "--proto tcp --dport 80"
+simple_iptables_rule "ssh" do
+  rule "--proto tcp --dport 22"
   jump "ACCEPT"
 end
 
