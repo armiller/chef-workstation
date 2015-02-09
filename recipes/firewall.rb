@@ -13,6 +13,7 @@ include_recipe "simple_iptables"
 
 simple_iptables_policy "INPUT" do
   policy "DROP"
+  ip_versions :both
 end
 
 # Allow all traffic on the loopback device
@@ -24,6 +25,7 @@ simple_iptables_rule "system" do
     "-m conntrack --ctstate ESTABLISHED,RELATED"
   ]
   jump "ACCEPT"
+  ip_version :both
 end
 
 simple_iptables_rule 'icmp' do
@@ -32,16 +34,19 @@ simple_iptables_rule 'icmp' do
       "--protocol icmp --source 0/0 --icmp-type time-exceeded"
   ]
   jump "ACCEPT"
+  ip_version :both
 end
 
 simple_iptables_rule "ssh" do
   rule "--proto tcp --dport 22"
   jump "ACCEPT"
+  ip_version :both
 end
 
 simple_iptables_rule "weechat" do
   rule "--proto tcp --dport 8000"
   jump "ACCEPT"
+  ip_version :both
 end
 
 service 'denyhosts' do
