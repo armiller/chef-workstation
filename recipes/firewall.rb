@@ -43,3 +43,8 @@ simple_iptables_rule "weechat" do
   rule "--proto tcp --dport 8000"
   jump "ACCEPT"
 end
+
+service 'denyhosts' do
+    supports :restart => true
+    action [:enable, :start]
+end
