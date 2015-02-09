@@ -27,15 +27,6 @@ simple_iptables_rule "system" do
   ip_version :both
 end
 
-simple_iptables_rule 'icmp' do
-  rule [
-      "--protocol icmp --icmp-type echo-request",
-      "--protocol icmp --icmp-type time-exceeded"
-  ]
-  jump "ACCEPT"
-  ip_version :both
-end
-
 simple_iptables_rule "ssh" do
   rule "--proto tcp --dport 22"
   jump "ACCEPT"
