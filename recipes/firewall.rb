@@ -13,6 +13,7 @@ include_recipe "simple_iptables"
 
 simple_iptables_policy "INPUT" do
   policy "DROP"
+  ip_version :both
 end
 
 # Allow all traffic on the loopback device
@@ -35,6 +36,12 @@ end
 
 simple_iptables_rule "weechat" do
   rule "--proto tcp --dport 8000"
+  jump "ACCEPT"
+  ip_version :both
+end
+
+simple_iptables_rule "mosh" do
+  rule "--proto udp --dport 60001"
   jump "ACCEPT"
   ip_version :both
 end
